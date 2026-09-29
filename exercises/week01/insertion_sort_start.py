@@ -15,8 +15,34 @@ def insertion_sort(sequence):
     Returns:
         list: De gesorteerde lijst.
     """
-    # TODO: implementeer insertion sort
-    pass
+    if(len(sequence) > 1):
+        for i in range(1, len(sequence)):
+            value = sequence[i]
+            j = i - 1
+
+            while j >= 0 and value < sequence[j]:
+                sequence[j + 1] = sequence[j]
+                j -= 1
+            sequence[j + 1] = value
+
+    return sequence
+        
+
+def bubble_sort(sequence):
+
+    if(len(sequence) > 1):
+        for i in range(len(sequence)):
+            swapped = False
+            for j in range(0, len(sequence)-i-1):
+                if sequence[j] > sequence[j+1]: #i?
+                    sequence[j], sequence[j+1] = sequence[j+1], sequence[j]
+                    swapped = True
+            if(swapped == False):
+                break
+
+    return sequence
+
+
 
 
 if __name__ == "__main__":
@@ -33,7 +59,12 @@ if __name__ == "__main__":
     for lijst in test_lijsten:
         origineel = lijst.copy()
         gesorteerd = insertion_sort(lijst)
-        print(f"Origineel: {origineel} -> Gesorteerd: {gesorteerd}")
+        print(f"INSERT Origineel: {origineel} -> Gesorteerd: {gesorteerd}")
+    for lijst in test_lijsten:
+        origineel = lijst.copy()
+        gesorteerd = bubble_sort(lijst)
+        print(f"BUBBLE Origineel: {origineel} -> Gesorteerd: {gesorteerd}")
+        
 
     # Stap 5 (uitbreiding): vergelijk met bubble sort en merge sort
     # Kopieer bubble_sort en merge_sort uit de cursus en test hier:
